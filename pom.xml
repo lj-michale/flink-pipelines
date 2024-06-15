@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.turing.flink</groupId>
+    <artifactId>flink-pipelines</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <description> Flink Pipeline Series(Flink1.18,Flink1.19....) </description>
+
+    <modules>
+        <module>flink-pipeline-dependencies</module>
+        <module>flink-pipeline-frameworks</module>
+        <module>flink-pipeline-tasks</module>
+        <module>flink-pipeline-tests</module>
+    </modules>
+
+    <!-- 阿里云仓库配置 -->
+    <repositories>
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public//</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+       <!-- <dependencies>
+            <dependency>
+                <groupId>org.turing.flink</groupId>
+                <artifactId>flink-pipeline-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>-->
+    </dependencyManagement>
+
+</project>
