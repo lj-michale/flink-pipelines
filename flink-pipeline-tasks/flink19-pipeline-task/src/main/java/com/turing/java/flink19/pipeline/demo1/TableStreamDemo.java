@@ -7,7 +7,16 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 import static org.apache.flink.table.api.Expressions.$;
-
+/**
+ * 自定义函数（UDF）
+ * 系统函数尽管庞大，也不可能涵盖所有的功能；如果有系统函数不支持的需求，我们就需要用自定义函数（User Defined Functions，UDF）来实现了。
+ * Flink的Table API和SQL提供了多种自定义函数的接口，以抽象类的形式定义。
+ * 当前UDF主要有以下几类：
+ * 标量函数（Scalar Functions）：将输入的标量值转换成一个新的标量值；
+ * 表函数（Table Functions）：将标量值转换成一个或多个新的行数据，也就是扩展成一个表；
+ * 聚合函数（Aggregate Functions）：将多行数据里的标量值转换成一个新的标量值；
+ * 表聚合函数（Table Aggregate Functions）：将多行数据里的标量值转换成一个或多个新的行数据。
+ * */
 public class TableStreamDemo {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
