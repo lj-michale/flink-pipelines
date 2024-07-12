@@ -4,16 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.turing.flink</groupId>
-        <artifactId>flink-pipelines</artifactId>
+        <artifactId>flink-pipeline-tasks</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>flink-pipeline-tasks</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>flink20-pipeline-task</artifactId>
+    <packaging>jar</packaging>
 
-    <modules>
-        <module>flink19-pipeline-task</module>
-        <module>flink20-pipeline-task</module>
-    </modules>
 
 </project>

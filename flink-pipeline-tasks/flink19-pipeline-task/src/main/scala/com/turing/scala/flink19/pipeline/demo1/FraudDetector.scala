@@ -30,14 +30,11 @@ class FraudDetector extends KeyedProcessFunction[Long, Transaction, Alert] {
     // ValueState 需要使用 ValueStateDescriptor 来创建，ValueStateDescriptor
     // 包含了 Flink 如何管理变量的一些元数据信息。状态在使用之前需要先被注册。 状态需要使用 open() 函数来注册状态。
     val flagDescriptor = new ValueStateDescriptor("flag", Types.BOOLEAN)
-
     val timeDescriptor = new ValueStateDescriptor("time", Types.LONG)
 
     // 获取 flagDescriptor 的状态
     flagState = getRuntimeContext.getState(flagDescriptor)
-
     timeState = getRuntimeContext.getState(timeDescriptor)
-
 
   }
 

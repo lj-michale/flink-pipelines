@@ -6,11 +6,11 @@ import org.apache.flink.walkthrough.common.entity
 import org.apache.flink.walkthrough.common.entity.Alert
 import org.apache.flink.walkthrough.common.source.TransactionSource
 
-
 //程序的数据处理流
 object FraudDetectionJob {
 
   def main(args: Array[String]): Unit = {
+
     val env=StreamExecutionEnvironment.createLocalEnvironment()
 
     val transactions:DataStream[entity.Transaction]=env
