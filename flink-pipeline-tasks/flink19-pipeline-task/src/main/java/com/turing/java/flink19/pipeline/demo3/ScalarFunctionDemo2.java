@@ -37,6 +37,11 @@ public class ScalarFunctionDemo2 {
                 // 调用了 sql 的 execute 就不需要 env.execute()
                 .execute()
                 .print();
+        // 左联结
+        table_env
+                .sqlQuery("select name,word,length from words left join lateral table (splitFunction(name)) on true")
+                .execute()
+                .print();
 
     }
 }
