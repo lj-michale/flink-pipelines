@@ -9,6 +9,9 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import static org.apache.flink.table.api.Expressions.$;
 import static org.apache.flink.table.api.Expressions.call;
 
+/**
+ * https://developer.aliyun.com/article/1532340?spm=a2c6h.12873639.article-detail.52.68065a58l8pKhN&scm=20140722.ID_community@@article@@1532340._.ID_community@@article@@1532340-OR_rec-V_1-RL_community@@article@@765311
+ * */
 public class ScalarFunctionDemo4 {
 
     public static void main(String[] args) {
