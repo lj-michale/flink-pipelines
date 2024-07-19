@@ -1,0 +1,5 @@
+UDF函数，User-Defined Function。在Flink中，UDF函数可以分为四类：
+ScalarFunction（标量函数，一进一出）
+TableFunction（表值函数，一进多出）
+AggregateFunction（聚合函数，多进一出）
+TableAggregateFunction（表值聚合函数，多进多出）
