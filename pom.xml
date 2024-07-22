@@ -9,12 +9,9 @@
 
     <description> Flink Pipeline Series(Flink1.18,Flink1.19....) </description>
 
-    <modules>
-        <module>flink-pipeline-dependencies</module>
-        <module>flink-pipeline-frameworks</module>
-        <module>flink-pipeline-tasks</module>
-        <module>flink-pipeline-tests</module>
-    </modules>
+    <properties>
+        <lombok.version>1.18.30</lombok.version>
+    </properties>
 
     <!-- 阿里云仓库配置 -->
     <repositories>
@@ -32,17 +29,27 @@
         </repository>
     </repositories>
 
+    <modules>
+        <module>flink-pipeline-dependencies</module>
+        <module>flink-pipeline-frameworks</module>
+        <module>flink-pipeline-tasks</module>
+        <module>flink-pipeline-tests</module>
+    </modules>
+
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
-            <scope>provided</scope>
+            <version>1.18.24</version>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
-       <!-- <dependencies>
+        <dependencies>
             <dependency>
                 <groupId>org.turing.flink</groupId>
                 <artifactId>flink-pipeline-dependencies</artifactId>
@@ -50,7 +57,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        </dependencies>-->
+        </dependencies>
     </dependencyManagement>
 
 

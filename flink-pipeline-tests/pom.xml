@@ -11,4 +11,8 @@
     <artifactId>flink-pipeline-tests</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>flink-generate-api</module>
+    </modules>
+
 </project>
