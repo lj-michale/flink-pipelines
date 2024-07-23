@@ -17,7 +17,7 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi adminApi() {
         return GroupedOpenApi.builder()
-                .group("管理端接口")
+                .group("用户Admin端接口")
                 .pathsToMatch("/api/admin/**") // 根据你的实际路径进行配置
                 .build();
     }
@@ -25,10 +25,11 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi userApi() {
         return GroupedOpenApi.builder()
-                .group("后端接口")
-                .pathsToMatch("/api/turing/**") // 根据你的实际路径进行配置
+                .group("用户C端接口")
+                .pathsToMatch("/api/web/**") // 根据你的实际路径进行配置
                 .build();
     }
+
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
