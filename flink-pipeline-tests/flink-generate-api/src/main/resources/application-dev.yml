@@ -1,0 +1,17 @@
+
+#mybatis-plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    #打印sql日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #id自增类型配置
+      id-type: ASSIGN_ID
+      #逻辑删除字段配置
+      logic-delete-field: deleted
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+    #控制台mybatis-plus标记
+    banner: true
