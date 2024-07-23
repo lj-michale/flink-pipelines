@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base;
+package com.turing.flink.base.springboot.starter;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

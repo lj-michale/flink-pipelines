@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @desr knife4j-openapi3-jakarta-spring-boot-starter 配置
+ * @url  http://localhost:18081/doc.html
  * */
 @Configuration
 public class SwaggerConfig {

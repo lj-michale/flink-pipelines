@@ -15,25 +15,21 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.init;
-
-import org.springframework.context.ApplicationEvent;
+package com.turing.flink.convention.springboot.starter.errorcode;
 
 /**
- * 应用初始化事件
- *
- * <p> 规约事件，通过此事件可以查看业务系统所有初始化行为
+ * 平台错误码
  * 
  */
-public class ApplicationInitializingEvent extends ApplicationEvent {
+public interface IErrorCode {
 
     /**
-     * Create a new {@code ApplicationEvent}.
-     *
-     * @param source the object on which the event initially occurred or with
-     *               which the event is associated (never {@code null})
+     * 错误码
      */
-    public ApplicationInitializingEvent(Object source) {
-        super(source);
-    }
+    String code();
+
+    /**
+     * 错误信息
+     */
+    String message();
 }

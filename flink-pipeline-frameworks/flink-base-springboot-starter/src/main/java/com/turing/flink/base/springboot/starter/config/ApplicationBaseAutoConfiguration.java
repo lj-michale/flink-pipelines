@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.config;
-import com.turing.flink.base.springboot.starter.base.ApplicationContextHolder;
-import com.turing.flink.base.springboot.starter.base.init.ApplicationContentPostProcessor;
-import com.turing.flink.base.springboot.starter.base.safa.FastJsonSafeMode;
+package com.turing.flink.base.springboot.starter.config;
+import com.turing.flink.base.springboot.starter.ApplicationContextHolder;
+import com.turing.flink.base.springboot.starter.init.ApplicationContentPostProcessor;
+import com.turing.flink.base.springboot.starter.safa.FastJsonSafeMode;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;

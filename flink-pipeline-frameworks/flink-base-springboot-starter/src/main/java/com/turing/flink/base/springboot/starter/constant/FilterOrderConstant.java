@@ -15,31 +15,16 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.constant;
+package com.turing.flink.base.springboot.starter.constant;
 
 /**
- * 用户常量
+ * 全局过滤器顺序执行常量类
  * 
  */
-public final class UserConstant {
+public final class FilterOrderConstant {
 
     /**
-     * 用户 ID Key
+     * 用户信息传递过滤器执行顺序排序
      */
-    public static final String USER_ID_KEY = "userId";
-
-    /**
-     * 用户名 Key
-     */
-    public static final String USER_NAME_KEY = "username";
-
-    /**
-     * 用户真实名称 Key
-     */
-    public static final String REAL_NAME_KEY = "realName";
-
-    /**
-     * 用户 Token Key
-     */
-    public static final String USER_TOKEN_KEY = "token";
+    public static final int USER_TRANSMIT_FILTER_ORDER = 100;
 }

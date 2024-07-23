@@ -15,4 +15,4 @@
 # limitations under the License.
 #
 
-com.turing.flink.base.springboot.starter.base.config.ApplicationBaseAutoConfiguration
+com.turing.flink.base.springboot.starter.config.ApplicationBaseAutoConfiguration

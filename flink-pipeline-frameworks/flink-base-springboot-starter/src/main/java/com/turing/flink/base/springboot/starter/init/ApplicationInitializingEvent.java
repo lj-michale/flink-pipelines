@@ -15,16 +15,25 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.constant;
+package com.turing.flink.base.springboot.starter.init;
+
+import org.springframework.context.ApplicationEvent;
 
 /**
- * 全局过滤器顺序执行常量类
+ * 应用初始化事件
+ *
+ * <p> 规约事件，通过此事件可以查看业务系统所有初始化行为
  * 
  */
-public final class FilterOrderConstant {
+public class ApplicationInitializingEvent extends ApplicationEvent {
 
     /**
-     * 用户信息传递过滤器执行顺序排序
+     * Create a new {@code ApplicationEvent}.
+     *
+     * @param source the object on which the event initially occurred or with
+     *               which the event is associated (never {@code null})
      */
-    public static final int USER_TRANSMIT_FILTER_ORDER = 100;
+    public ApplicationInitializingEvent(Object source) {
+        super(source);
+    }
 }

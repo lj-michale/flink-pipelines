@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.init;
+package com.turing.flink.base.springboot.starter.init;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

@@ -15,18 +15,51 @@
  * limitations under the License.
  */
 
-package com.turing.flink.base.springboot.starter.base.safa;
+package com.turing.flink.convention.springboot.starter.result;
 
-import org.springframework.beans.factory.InitializingBean;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
- * FastJson安全模式，开启后关闭类型隐式传递
+ * 全局返回对象
  * 
  */
-public class FastJsonSafeMode implements InitializingBean {
+@Data
+@Accessors(chain = true)
+public class Result<T> implements Serializable {
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.setProperty("fastjson2.parser.safeMode", "true");
+    @Serial
+    private static final long serialVersionUID = 5679018624309023727L;
+
+    /**
+     * 正确返回码
+     */
+    public static final String SUCCESS_CODE = "0";
+
+    /**
+     * 返回码
+     */
+    private String code;
+
+    /**
+     * 返回消息
+     */
+    private String message;
+
+    /**
+     * 响应数据
+     */
+    private T data;
+
+    /**
+     * 请求ID
+     */
+    private String requestId;
+
+    public boolean isSuccess() {
+        return SUCCESS_CODE.equals(code);
     }
 }
