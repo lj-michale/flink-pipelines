@@ -1,6 +1,7 @@
 
 #mybatis-plus配置
 mybatis-plus:
+  mapper-locations: classpath:mapper/*.mapper.xml
   configuration:
     map-underscore-to-camel-case: true
     #打印sql日志

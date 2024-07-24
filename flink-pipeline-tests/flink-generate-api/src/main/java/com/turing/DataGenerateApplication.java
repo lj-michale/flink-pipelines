@@ -11,7 +11,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
  * @author: Tony
  * */
 @Slf4j
-@MapperScan("com.turing.mapper.*")
+@MapperScan("com.turing.mapper")
 @SpringBootApplication
 public class DataGenerateApplication {
 

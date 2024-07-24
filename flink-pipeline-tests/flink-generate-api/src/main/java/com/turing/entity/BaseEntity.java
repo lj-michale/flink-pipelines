@@ -16,14 +16,14 @@ public class BaseEntity implements Serializable {
     @Schema(description = "ID", example = "DTG27134715")
     private Integer id;
 
-    @Schema(description = "创建日期", example = "")
-    private Date createTime;
+//    @Schema(description = "创建日期", example = "")
+//    private Date createTime;
 
     @Schema(description = "创建人", example = "")
     private Integer creator;
 
-    @Schema(description = "更新日期", example = "")
-    private Date updateTime;
+//    @Schema(description = "更新日期", example = "")
+//    private Date updateTime;
 
     @Schema(description = "更新人", example = "")
     private Integer updator;
