@@ -10,3 +10,4 @@
 - [dynamic-datasource](https://www.kancloud.cn/tracy5546/dynamic-datasource/2264611)
 - [baomidou](https://gitee.com/baomidou/)
 - [baomidou文档](https://baomidou.com/)
+- [mvnrepository](https://mvnrepository.com/)

@@ -16,6 +16,7 @@
         <module>flink-convention-spring-boot-starter</module>
         <module>flink-web-springboot-starter</module>
         <module>flink-log-springboot-starter</module>
+        <module>flink-flow-springboot-starter</module>
     </modules>
 
 </project>
