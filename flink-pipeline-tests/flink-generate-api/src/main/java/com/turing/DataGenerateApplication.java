@@ -16,16 +16,17 @@ import org.springframework.core.env.ConfigurableEnvironment;
 public class DataGenerateApplication {
 
     public static void main(String[] args) {
-        ConfigurableEnvironment env = SpringApplication.run(DataGenerateApplication.class, args)
+        ConfigurableEnvironment env = SpringApplication
+                .run(DataGenerateApplication.class, args)
                 .getEnvironment();
+        String applicationName = env.getProperty("spring.application.name");
+        String serverPort = env.getProperty("server.port");
         log.info("\n----------------------------------------------------------\n\t" +
                  "Application: '{}' is running Success! \n\t" +
                  "Local URL: \thttp://localhost:{}\n\t" +
                  "Document:\thttp://localhost:{}/doc.html\n" +
                  "----------------------------------------------------------",
-                 env.getProperty("spring.application.name"),
-                 env.getProperty("server.port"),
-                 env.getProperty("server.port"));
+                applicationName, serverPort, serverPort);
     }
 
 }
