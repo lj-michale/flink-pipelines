@@ -28,6 +28,10 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.turing.flink</groupId>
             <artifactId>flink-log-springboot-starter</artifactId>
             <version>${project.version}</version>

@@ -74,6 +74,7 @@ public class ILogPrintAspect {
                     methodType = servletRequestAttributes.getRequest().getMethod();
                     requestURI = servletRequestAttributes.getRequest().getRequestURI();
                 } catch (Exception ignored) {
+                    ignored.printStackTrace();
                 }
                 log.info("[{}] {}, executeTime: {}ms, info: {}", methodType, requestURI, SystemClock.now() - startTime, JSON.toJSONString(logPrint));
             }

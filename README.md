@@ -11,3 +11,4 @@
 - [baomidou](https://gitee.com/baomidou/)
 - [baomidou文档](https://baomidou.com/)
 - [mvnrepository](https://mvnrepository.com/)
+- [ruoyi](https://doc.ruoyi.vip/)

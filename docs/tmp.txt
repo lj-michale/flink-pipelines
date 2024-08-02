@@ -1,0 +1,34 @@
+﻿-- 操作日志表
+CREATE TABLE `log_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `module` varchar(50) DEFAULT NULL COMMENT '功能模块',
+  `type` varchar(25) DEFAULT NULL COMMENT '操作类型',
+  `message` varchar(100) DEFAULT NULL COMMENT '操作描述',
+  `req_param` varchar(200) DEFAULT NULL COMMENT '请求参数',
+  `res_param` varchar(200) DEFAULT NULL COMMENT '响应参数',
+  `take_up_time` long DEFAULT NULL COMMENT '耗时',
+  `user_id` varchar(25) NOT NULL COMMENT '操作用户id',
+  `user_name` varchar(25) DEFAULT NULL COMMENT '操作用户名称',
+  `method` varchar(25) DEFAULT NULL COMMENT '操作方法',
+  `uri` varchar(25) DEFAULT NULL COMMENT '请求url',
+  `ip` varchar(25) DEFAULT NULL COMMENT '请求IP',
+  `version` varchar(25) DEFAULT NULL COMMENT '版本号',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`,`user_id`) USING BTREE
+)ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志';
+
+-- 异常信息表
+CREATE TABLE `log_error_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `req_param` varchar(200) DEFAULT NULL COMMENT '请求参数',
+  `name` varchar(25) DEFAULT NULL COMMENT '操作用户id',
+  `message` varchar(100) DEFAULT NULL COMMENT '操作描述',
+  `user_id` varchar(25) NOT NULL COMMENT '操作用户id',
+  `user_name` varchar(25) DEFAULT NULL COMMENT '操作用户名称',
+  `method` varchar(25) DEFAULT NULL COMMENT '操作方法',
+  `uri` varchar(25) DEFAULT NULL COMMENT '请求url',
+  `ip` varchar(25) DEFAULT NULL COMMENT '请求IP',
+  `version` varchar(25) DEFAULT NULL COMMENT '版本号',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`,`user_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志异常信息';
