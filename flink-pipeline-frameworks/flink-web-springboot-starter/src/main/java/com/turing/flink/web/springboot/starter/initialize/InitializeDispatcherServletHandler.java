@@ -45,6 +45,7 @@ public final class InitializeDispatcherServletHandler implements CommandLineRunn
         try {
             restTemplate.execute(url, HttpMethod.GET, null, null);
         } catch (Throwable ignored) {
+            ignored.printStackTrace();
         }
     }
 }

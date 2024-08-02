@@ -15,12 +15,15 @@ object FlinkSQLLookupJoin {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     env.setRestartStrategy(RestartStrategies.noRestart())
 
-    env.setRuntimeMode(RuntimeExecutionMode.BATCH)/**因为数据有界，用batch模式*/
+    /**因为数据有界，用batch模式*/
+    env.setRuntimeMode(RuntimeExecutionMode.BATCH)
     val tableEnv = StreamTableEnvironment.create(env)
 
     import org.apache.flink.streaming.api.scala._
 
-    /**模拟生成主数据，实际可以是任何数据源，比如Kafka等*/
+    /**
+     * 模拟生成主数据，实际可以是任何数据源，比如Kafka等
+     * */
     val mainDS = env.fromCollection(Seq(
       (1,"221.198.68.4"),
       (2, "192.168.100.1"),
@@ -30,11 +33,15 @@ object FlinkSQLLookupJoin {
       (6, "1.2.3.99")
     ))
 
-    /**将主数据映射成表t1*/
+    /**
+     * 将主数据映射成表t1
+     * */
     val mainTable = tableEnv.fromDataStream(mainDS).as("id","ip")
     tableEnv.createTemporaryView("t1", mainTable)
 
-    /**将Doris外部数据源映射成表t2*/
+    /**
+     * 将Doris外部数据源映射成表t2
+     * */
     tableEnv.executeSql(
       """
         |CREATE TABLE t2 (
@@ -59,7 +66,9 @@ object FlinkSQLLookupJoin {
         |)
             """.stripMargin)
 
-    /**执行最后的查询统计操作，并打印结果*/
+    /**
+     * 执行最后的查询统计操作，并打印结果
+     * */
     tableEnv.executeSql(
       """
         |select
@@ -84,6 +93,7 @@ object FlinkSQLLookupJoin {
         |)
         |group by
         |ip
-            """.stripMargin).print()
+        """.stripMargin).print()
   }
+
 }

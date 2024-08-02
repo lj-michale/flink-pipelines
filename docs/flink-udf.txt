@@ -3,3 +3,21 @@ ScalarFunction（标量函数，一进一出）
 TableFunction（表值函数，一进多出）
 AggregateFunction（聚合函数，多进一出）
 TableAggregateFunction（表值聚合函数，多进多出）
+
+bin/flink run \
+-t yarn-per-job \
+-d \
+-p 5 \
+-Drest.flamegraph.enabled=true \
+-Denv.java.opts="-XX:+PrintGCDetails -XX:+PrintGCDateStamps" \
+-Dyarn.application.queue=bigdata-dev \
+-Djobmanager.memory.process.size=1024mb \
+-Dtaskmanager.memory.process.size=2048mb \
+-Dtaskmanager.numberOfTaskSlots=2 \
+-c com.atguigu.flink.tuning.UvDemo \
+/opt/module/flink-1.19.1/myjar/flink-tuning-1.0-SNAPSHOT.jar
+
+
+
+
+
