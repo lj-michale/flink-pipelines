@@ -7,7 +7,6 @@
         <artifactId>flink-pipeline-tasks</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
-
     <artifactId>flink20-pipeline-task</artifactId>
     <packaging>jar</packaging>
 
@@ -49,6 +48,17 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-api-scala-bridge_2.12</artifactId>
             <version>${flink.version}</version>
+        </dependency>
+        <!-- 连接器  -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-base</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-pulsar</artifactId>
+            <version>4.1.0-1.18</version>
         </dependency>
     </dependencies>
 
