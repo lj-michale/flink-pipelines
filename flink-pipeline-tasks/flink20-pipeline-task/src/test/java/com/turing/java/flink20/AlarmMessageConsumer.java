@@ -5,7 +5,7 @@
 //
 ///**
 // * @descr AlarmMessageConsumer用于接收sink的内容
-// *
+// * https://blog.csdn.net/Kartist139/article/details/137196549
 // * */
 //public class AlarmMessageConsumer {
 //
