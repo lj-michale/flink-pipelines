@@ -1,4 +1,5 @@
-﻿package com.turing.java.flink19.pipeline.demo9
+
+package com.turing.java.flink19.pipeline.demo9
 
 import org.apache.flink.api.common.RuntimeExecutionMode
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
