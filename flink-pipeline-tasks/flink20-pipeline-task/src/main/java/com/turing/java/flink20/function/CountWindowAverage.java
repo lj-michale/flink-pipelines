@@ -1,4 +1,4 @@
-﻿package com.turing.java.flink20.function;
+package com.turing.java.flink20.function;
 
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.common.state.ValueState;

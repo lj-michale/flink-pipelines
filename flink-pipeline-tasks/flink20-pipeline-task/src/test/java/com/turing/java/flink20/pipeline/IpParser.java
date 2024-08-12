@@ -1,4 +1,4 @@
-ï»¿package com.turing.java.flink20.pipeline;
+package com.turing.java.flink20.pipeline;
 
 
 import java.io.ByteArrayOutputStream;
@@ -7,16 +7,16 @@ import java.io.RandomAccessFile;
 
 public class IpParser {
     /*
-     * IPåœ°å€è§£æå™¨
+     * IPµØÖ·½âÎöÆ÷
      */
-    //çº¯çœŸIPæ•°æ®åº“æ–‡ä»¶
+    //´¿ÕæIPÊı¾İ¿âÎÄ¼ş
     private String DbPath = "./cz88/qqwry.dat";	//www.cz88.net
 
     private String Country, LocalStr;
     private long IPN;
     private int RecordCount, CountryFlag;
     private long RangE, RangB, OffSet, StartIP, EndIP, FirstStartIP, LastStartIP, EndIPOff;
-    private RandomAccessFile fis;	//æ–‡ä»¶éšæœºè¯»å†™ï¼ŒæŒ‰byte[]è¯»/å†™
+    private RandomAccessFile fis;	//ÎÄ¼şËæ»ú¶ÁĞ´£¬°´byte[]¶Á/Ğ´
     private byte[] buff;
 
     private long ByteArrayToLong(byte[] b) {
@@ -32,7 +32,7 @@ public class IpParser {
     }
 
     private long ipStrToLong(String ip) {
-        String[] arr = ip.split("\\.");	//â€œæ­£åˆ™è¡¨è¾¾å¼â€ï¼š"."åœ¨æ­£åˆ™ä¸­æœ‰ç‰¹æ®Šå«ä¹‰ï¼Œéœ€è½¬ä¹‰
+        String[] arr = ip.split("\\.");	//¡°ÕıÔò±í´ïÊ½¡±£º"."ÔÚÕıÔòÖĞÓĞÌØÊâº¬Òå£¬Ğè×ªÒå
         long ret = 0;
         for (int i = 0; i < arr.length; i++) {
             long l = 1;
@@ -40,7 +40,7 @@ public class IpParser {
                 l *= 256L;
             }
             try {
-                ret += Long.parseLong(arr[arr.length-i-1]) * l;	//ä»ä½ä½ï¼ˆå³è¾¹ï¼‰èµ·
+                ret += Long.parseLong(arr[arr.length-i-1]) * l;	//´ÓµÍÎ»£¨ÓÒ±ß£©Æğ
             } catch(Exception e) {
                 ret += 0;
             }
@@ -52,15 +52,15 @@ public class IpParser {
         IPN = ipStrToLong(ip);
         fis = new RandomAccessFile(DbPath, "r");
         buff = new byte[4];
-        fis.seek(0);	//seek() è®¾ç½®æ–‡ä»¶æŒ‡é’ˆä½ç½®
-        fis.read(buff);	//è¯»å–buffä¸ªå­—èŠ‚
+        fis.seek(0);	//seek() ÉèÖÃÎÄ¼şÖ¸ÕëÎ»ÖÃ
+        fis.read(buff);	//¶ÁÈ¡buff¸ö×Ö½Ú
         FirstStartIP = ByteArrayToLong(buff);
         fis.read(buff);
         LastStartIP = ByteArrayToLong(buff);
         RecordCount = (int)((LastStartIP - FirstStartIP) / 7);
 
         if (RecordCount <= 1) {
-            LocalStr = Country = "æœªçŸ¥";
+            LocalStr = Country = "Î´Öª";
             throw new Exception();
         }
 
@@ -124,7 +124,7 @@ public class IpParser {
             byteout.write(c);
             c = fis.readByte();
         } while (c != 0 && fis.getFilePointer() < l);
-        //qqwry.datæ–‡ä»¶é»˜è®¤ç¼–ç ä¸ºGBKï¼Œä½†è¯¥æ–‡ä»¶æ˜¯UTF-8æ ¼å¼çš„ï¼Œæ‰€ä»¥è¾“å‡ºä¼šä¹±ç ï¼Œéœ€è¦æŒ‡å®šä¸ºGBK
+        //qqwry.datÎÄ¼şÄ¬ÈÏ±àÂëÎªGBK£¬µ«¸ÃÎÄ¼şÊÇUTF-8¸ñÊ½µÄ£¬ËùÒÔÊä³ö»áÂÒÂë£¬ĞèÒªÖ¸¶¨ÎªGBK
         return new String(byteout.toByteArray(),"GBK");
     }
 
@@ -173,22 +173,22 @@ public class IpParser {
     public String getCountry() { return this.Country; }
     public void setPath(String path) { this.DbPath = path; }
 
-    //è°ƒç”¨è¯¥å‡½æ•°å³å¯è·å¾—IPåœ°å€æ‰€åœ¨çš„å®é™…åŒºåŸŸ
+    //µ÷ÓÃ¸Ãº¯Êı¼´¿É»ñµÃIPµØÖ·ËùÔÚµÄÊµ¼ÊÇøÓò
     public String parse(String ipStr) throws Exception {
         this.seek(ipStr);
         return this.getCountry() + " " + this.getLocal();
     }
 
 
-    //æµ‹è¯•
+    //²âÊÔ
     public static void main(String[] args) {
         IpParser ipParser = new IpParser();
         try {
             //203.107.6.88
             String strs = ipParser.parse("120.196.145.58");
             System.out.println(strs.split(" ")[0] + " : " + strs.split(" ")[1]);
-            //IP: 120.196.145.58 è¾“å‡ºç»“æœï¼šå¹¿ä¸œçœæ¢…å·å¸‚ : ç§»åŠ¨
-            //IP: 203.107.6.88 è¾“å‡ºç»“æœï¼šæµ™æ±Ÿçœæ­å·å¸‚ : é˜¿é‡Œå·´å·´é˜¿é‡Œäº‘NTPæœåŠ¡å™¨
+            //IP: 120.196.145.58 Êä³ö½á¹û£º¹ã¶«Ê¡Ã·ÖİÊĞ : ÒÆ¶¯
+            //IP: 203.107.6.88 Êä³ö½á¹û£ºÕã½­Ê¡º¼ÖİÊĞ : °¢Àï°Í°Í°¢ÀïÔÆNTP·şÎñÆ÷
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

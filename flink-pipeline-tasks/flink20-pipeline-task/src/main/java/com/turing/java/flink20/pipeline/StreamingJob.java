@@ -1,4 +1,4 @@
-ï»¿package com.turing.java.flink20.pipeline;
+package com.turing.java.flink20.pipeline;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.configuration.CheckpointingOptions;
@@ -9,7 +9,7 @@ import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * @descr Flinkå®æ—¶æµè®¡ç®—ä½œä¸š
+ * @descr FlinkÊµÊ±Á÷¼ÆËã×÷Òµ
  *
  * */
 public class StreamingJob {

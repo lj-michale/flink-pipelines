@@ -1,4 +1,4 @@
-ï»¿package com.turing.java.flink20.pipeline;
+package com.turing.java.flink20.pipeline;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,22 +12,22 @@ import java.util.regex.Pattern;
 //import com.etl.utls.IpParser;
 
 /**
- * ApacheæœåŠ¡å™¨æ—¥å¿—Logè§£æ
+ * Apache·şÎñÆ÷ÈÕÖ¾Log½âÎö
  * https://blog.csdn.net/weixin_39469127/article/details/90419026
  * */
 public class LogParser {
 
-    //ApacheæœåŠ¡å™¨æ—¥å¿—ä¿¡æ¯çš„æ­£åˆ™è¡¨è¾¾å¼
+    //Apache·şÎñÆ÷ÈÕÖ¾ĞÅÏ¢µÄÕıÔò±í´ïÊ½
     private static final String APACHE_LOG_REGEX =
             "^([0-9.]+)\\s([\\w.-]+)\\s([\\w.-]+)\\s\\[([^\\[\\]]+)\\]\\s\"((?:[^"
                     + "\"]|\\\")+)\"\\s(\\d{3})\\s(\\d+|-)\\s\"((?:[^\"]|\\\")+)\"\\s\"((?:"
                     + "[^\"]|\\\")+)\"\\s\"(.+)\"\\s(\\d+|-)\\s(\\d+|-)\\s(\\d+|-)\\s(.+)\\"
                     + "s(\\d+|-)$";
 
-    //ç”¨æˆ·æµè§ˆå™¨ä¿¡æ¯çš„æ­£åˆ™è¡¨è¾¾å¼
+    //ÓÃ»§ä¯ÀÀÆ÷ĞÅÏ¢µÄÕıÔò±í´ïÊ½
     private static final String USER_AGENT_REGEX = "^(.+)\\s\\((.+)\\)\\s(.+)\\s\\((.+)\\)\\s(.+)\\s(.+)$";
 
-    //æµ‹è¯•æ—¥å¿—ä¸€æ¡
+    //²âÊÔÈÕÖ¾Ò»Ìõ
     public static final String LOG = "120.196.145.58 "
             + "- "
             + "- "
@@ -48,33 +48,33 @@ public class LogParser {
 
     public static final String CANNOT_GET = "can not get";
 
-    //éœ€è¦è§£æçš„å­—æ®µ
-    private String ipAddress = null; //ipåœ°å€
+    //ĞèÒª½âÎöµÄ×Ö¶Î
+    private String ipAddress = null; //ipµØÖ·
     private String uniqueId = null; //uuid
-    private String url = null; //è®¿é—®çš„urlåœ°å€
-    private String sessionId = null; //ä¼šè¯id
-    private String sessionTimes = null; //æœåŠ¡å™¨å“åº”æ—¶é—´
-    private String areaAddress = null; //å›½å®¶
-    private String localAddress = null; //åœ°åŒº
-    private String browserType = null; //æµè§ˆå™¨ç±»å‹
-    private String operationSys = null; //æ“ä½œç³»ç»Ÿ
-    private String referUrl = null; //è®¿é—®çš„ä¸Šä¸€ä¸ªé¡µé¢url
-    private String receiveTime = null; //æœåŠ¡å™¨æ¥æ”¶è¯·æ±‚æ—¶é—´
-    private String userId = null; //ç”¨æˆ·id
+    private String url = null; //·ÃÎÊµÄurlµØÖ·
+    private String sessionId = null; //»á»°id
+    private String sessionTimes = null; //·şÎñÆ÷ÏìÓ¦Ê±¼ä
+    private String areaAddress = null; //¹ú¼Ò
+    private String localAddress = null; //µØÇø
+    private String browserType = null; //ä¯ÀÀÆ÷ÀàĞÍ
+    private String operationSys = null; //²Ù×÷ÏµÍ³
+    private String referUrl = null; //·ÃÎÊµÄÉÏÒ»¸öÒ³Ãæurl
+    private String receiveTime = null; //·şÎñÆ÷½ÓÊÕÇëÇóÊ±¼ä
+    private String userId = null; //ÓÃ»§id
 
-    //ä¿å­˜cookiesä¿¡æ¯çš„map
+    //±£´æcookiesĞÅÏ¢µÄmap
     private static Map<String, String> cookies = new HashMap<String, String>();
 
-    //å®ä¾‹åŒ–çš„LogParserè®¡æ•°
+    //ÊµÀı»¯µÄLogParser¼ÆÊı
     private static int count = 0;
-    //LogParserå”¯ä¸€æ ‡è¯†
+    //LogParserÎ¨Ò»±êÊ¶
     private int index = 0;
     private LogParser() {
         count++;
         index = count;
     }
 
-    //åˆå§‹åŒ–Logè§£æå™¨
+    //³õÊ¼»¯Log½âÎöÆ÷
     private void init() {
         setIpAddress(CANNOT_GET);
         setUniqueId(CANNOT_GET);
@@ -92,12 +92,12 @@ public class LogParser {
     }
 
     /*
-     * è§£æä¸€æ¡logæ—¥å¿—
+     * ½âÎöÒ»ÌõlogÈÕÖ¾
      *
-     * @param log ä¸€æ¡æ—¥å¿—
+     * @param log Ò»ÌõÈÕÖ¾
      */
     public void parse(String log) {
-        //åˆå§‹åŒ–Logè§£æå™¨
+        //³õÊ¼»¯Log½âÎöÆ÷
         init();
 
         String ipStr = null;
@@ -108,7 +108,7 @@ public class LogParser {
         String cookieStr = null;
         String hostNameStr = null;
 
-        //æ­£åˆ™è§£ææ—¥å¿—
+        //ÕıÔò½âÎöÈÕÖ¾
         Pattern pattern = Pattern.compile(APACHE_LOG_REGEX);
         Matcher matcher = pattern.matcher(LOG);
         if (matcher.find()) {
@@ -116,59 +116,59 @@ public class LogParser {
 //				System.out.println("group-" + i + " : " + matcher.group(i));
 //			}
 
-            //æ ¹æ®æ­£åˆ™è¡¨è¾¾å¼å°†æ—¥å¿—æ–‡ä»¶æ–­å¼€
-            ipStr = matcher.group(1); //è¿œç«¯ä¸»æœºï¼ˆè®¿å®¢IPåœ°å€ï¼‰
-            receiveTimeStr = matcher.group(4); //æœåŠ¡å™¨æ¥æ”¶è¯·æ±‚æ—¶é—´
-            urlStr = matcher.group(5); //è¯·æ±‚çš„ç¬¬ä¸€è¡Œï¼ˆè¯·æ±‚æ–¹å¼ã€è¯·æ±‚çš„URLã€è¯·æ±‚æ‰€ç”¨åè®®ï¼‰
-            referUrlStr = matcher.group(8); //ä¸Šä¸€ä¸ªè®¿é—®çš„é¡µé¢ï¼ˆè®¿å®¢æ¥æºï¼‰
-            userAgentStr = matcher.group(9); //è®¿å®¢æµè§ˆå™¨ä¿¡æ¯
-            cookieStr = matcher.group(10); //Cookieä¿¡æ¯ï¼ˆåŒ…å«uuid/userId/sessiontimeï¼‰
-            hostNameStr = matcher.group(14); //è®¿é—®ä¸»æœºåœ°å€
+            //¸ù¾İÕıÔò±í´ïÊ½½«ÈÕÖ¾ÎÄ¼ş¶Ï¿ª
+            ipStr = matcher.group(1); //Ô¶¶ËÖ÷»ú£¨·Ã¿ÍIPµØÖ·£©
+            receiveTimeStr = matcher.group(4); //·şÎñÆ÷½ÓÊÕÇëÇóÊ±¼ä
+            urlStr = matcher.group(5); //ÇëÇóµÄµÚÒ»ĞĞ£¨ÇëÇó·½Ê½¡¢ÇëÇóµÄURL¡¢ÇëÇóËùÓÃĞ­Òé£©
+            referUrlStr = matcher.group(8); //ÉÏÒ»¸ö·ÃÎÊµÄÒ³Ãæ£¨·Ã¿ÍÀ´Ô´£©
+            userAgentStr = matcher.group(9); //·Ã¿Íä¯ÀÀÆ÷ĞÅÏ¢
+            cookieStr = matcher.group(10); //CookieĞÅÏ¢£¨°üº¬uuid/userId/sessiontime£©
+            hostNameStr = matcher.group(14); //·ÃÎÊÖ÷»úµØÖ·
 
-            //ä¿å­˜IPåœ°å€
+            //±£´æIPµØÖ·
             ipAddress = ipStr;
-            //è§£æIPåœ°å€
+            //½âÎöIPµØÖ·
             IpParser ipParser = new IpParser();
             try {
-                //æ ¹æ®IPåœ°å€å¾—å‡ºæ‰€åœ¨åŒºåŸŸ
+                //¸ù¾İIPµØÖ·µÃ³öËùÔÚÇøÓò
                 areaAddress = ipParser.parse(ipStr).split(" ")[0];
                 localAddress = ipParser.parse(ipStr).split(" ")[1];
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            //æ ¼å¼åŒ–è¯·æ±‚æ¥å—æ—¶é—´
+            //¸ñÊ½»¯ÇëÇó½ÓÊÜÊ±¼ä
             DateFormat df = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss Z",Locale.US);
             try {
                 Date date = df.parse(receiveTimeStr);
-                //å°†æ—¶é—´è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+                //½«Ê±¼ä×ª»»Îª×Ö·û´®
                 receiveTime = Long.toString(date.getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-            //å°†urlä¸­çš„æ— æ•ˆå­—ç¬¦ä¸²ä¸¢å¼ƒ
+            //½«urlÖĞµÄÎŞĞ§×Ö·û´®¶ªÆú
             urlStr = urlStr.substring(5);
-            //é‡æ–°æ‹¼è£…æˆurlå­—ç¬¦ä¸²
+            //ÖØĞÂÆ´×°³Éurl×Ö·û´®
             url = hostNameStr + urlStr;
 
-            //è§£æç”¨æˆ·æµè§ˆå™¨ä¿¡æ¯
+            //½âÎöÓÃ»§ä¯ÀÀÆ÷ĞÅÏ¢
             pattern = Pattern.compile(USER_AGENT_REGEX);
             matcher = pattern.matcher(userAgentStr);
             if (matcher.find()) {
 //				for (int i = 0; i <= matcher.groupCount(); i++) {
 //					System.out.println("group-" + i + " : " + matcher.group(i));
 //				}
-                //è·å–æµè§ˆå™¨ç±»å‹
+                //»ñÈ¡ä¯ÀÀÆ÷ÀàĞÍ
                 browserType = matcher.group(5);
-                //è·å–æ“ä½œç³»ç»Ÿç±»å‹
+                //»ñÈ¡²Ù×÷ÏµÍ³ÀàĞÍ
                 operationSys = matcher.group(2).split(" ")[0];
             }
 
-            //ä¿å­˜ä¸Šä¸€ä¸ªé¡µé¢url
+            //±£´æÉÏÒ»¸öÒ³Ãæurl
             referUrl = referUrlStr;
 
-            //HashMapä¿å­˜cookieä¿¡æ¯
+            //HashMap±£´æcookieĞÅÏ¢
             String[] strs = cookieStr.split(";");
             for (int i = 0; i < strs.length; i++) {
                 String[] kv = strs[i].split("=");
@@ -176,17 +176,17 @@ public class LogParser {
                 String valStr = kv[1];
                 cookies.put(keyStr, valStr);
             }
-            //è·å–uuidä¿¡æ¯
+            //»ñÈ¡uuidĞÅÏ¢
             uniqueId = cookies.get("uuid");
-            //è·å–è´¦å·ä¿¡æ¯
+            //»ñÈ¡ÕËºÅĞÅÏ¢
             userId = cookies.get("userId");
-            //å¦‚æœæ²¡æœ‰è·å–æˆåŠŸï¼Œè¯´æ˜ç”¨æˆ·æ²¡æœ‰ç™»å½•
+            //Èç¹ûÃ»ÓĞ»ñÈ¡³É¹¦£¬ËµÃ÷ÓÃ»§Ã»ÓĞµÇÂ¼
             if (userId == null) {
                 userId = "unlog_in";
             }
-            //è·å–sessionTimes
+            //»ñÈ¡sessionTimes
             sessionTimes = cookies.get("st");
-            //æ‹¼è£…æˆsessionId
+            //Æ´×°³ÉsessionId
             sessionId = uniqueId + "|" + sessionTimes;
 
         }
@@ -293,12 +293,12 @@ public class LogParser {
     }
 
     /*
-     * æµ‹è¯•
+     * ²âÊÔ
      */
     public static void main(String[] args) {
-        //è·å–æ—¥å¿—è§£æå¯¹è±¡
+        //»ñÈ¡ÈÕÖ¾½âÎö¶ÔÏó
         LogParser logParser = new LogParser();
-        //è§£ææµ‹è¯•ç”¨ä¾‹æ—¥å¿—
+        //½âÎö²âÊÔÓÃÀıÈÕÖ¾
         logParser.parse(LogParser.LOG);
 
         String mapOutKey = logParser.getSessionId() + "&" + logParser.getReceiveTime();

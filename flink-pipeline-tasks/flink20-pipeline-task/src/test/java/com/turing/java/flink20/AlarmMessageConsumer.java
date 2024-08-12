@@ -1,10 +1,10 @@
-ï»¿//package com.turing.java.flink20;
+//package com.turing.java.flink20;
 //
 //import com.turing.java.flink20.bean.AlarmMessage;
 //import org.apache.pulsar.client.api.*;
 //
 ///**
-// * @descr AlarmMessageConsumerç”¨äºæ¥æ”¶sinkçš„å†…å®¹
+// * @descr AlarmMessageConsumerÓÃÓÚ½ÓÊÕsinkµÄÄÚÈİ
 // * https://blog.csdn.net/Kartist139/article/details/137196549
 // * */
 //public class AlarmMessageConsumer {

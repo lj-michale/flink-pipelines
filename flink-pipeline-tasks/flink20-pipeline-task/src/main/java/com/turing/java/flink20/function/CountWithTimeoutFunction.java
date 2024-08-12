@@ -1,4 +1,4 @@
-﻿package com.turing.java.flink20.function;
+package com.turing.java.flink20.function;
 
 import com.turing.java.flink20.bean.CountWithTimestamp;
 import org.apache.flink.api.common.functions.OpenContext;

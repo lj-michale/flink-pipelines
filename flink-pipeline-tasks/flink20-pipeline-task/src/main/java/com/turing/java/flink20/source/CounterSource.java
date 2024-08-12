@@ -1,4 +1,4 @@
-﻿package com.turing.java.flink20.source;
+package com.turing.java.flink20.source;
 
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;

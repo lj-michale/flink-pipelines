@@ -1,4 +1,4 @@
-﻿package com.turing.java.flink20.bean;
+package com.turing.java.flink20.bean;
 
 /**
  * The data type stored in the state

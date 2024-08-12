@@ -1,4 +1,4 @@
-ï»¿//package com.turing.java.flink20.pipeline;
+//package com.turing.java.flink20.pipeline;
 //
 //import com.turing.java.flink20.bean.WordCount;
 //import org.apache.flink.api.common.eventtime.WatermarkStrategy;
@@ -31,15 +31,15 @@
 ///**
 // *  https://blog.csdn.net/qq_36668144/article/details/139438844?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-139438844-blog-125610029.235^v43^pc_blog_bottom_relevance_base1&spm=1001.2101.3001.4242.1&utm_relevant_index=3
 // *
-// * å‚è€ƒ streamNative pulsar flink demo
+// * ²Î¿¼ streamNative pulsar flink demo
 // * <a href="https://github.com/streamnative/examples/tree/master/pulsar-flink">pulsar-flink example</a>
-// * ç”±äºä¸Šæ–¹é“¾æ¥çš„ streamNative flink demo ä½¿ç”¨ 1.10.1 ç‰ˆæœ¬ flink ä»¥åŠ 2.4.17 ç‰ˆæœ¬ pulsar connector,
-// * ä¸å½“å‰ 1.20 ç¤¾åŒºç‰ˆæœ¬çš„ flink å’Œ pulsar connector api å·²ç»å­˜åœ¨éƒ¨åˆ† api å·®å¼‚
-// * å› æ­¤æœ¬ demo ä½¿ç”¨ 1.17 flink ç‰ˆæœ¬è¿›è¡Œé‡æ„
+// * ÓÉÓÚÉÏ·½Á´½ÓµÄ streamNative flink demo Ê¹ÓÃ 1.10.1 °æ±¾ flink ÒÔ¼° 2.4.17 °æ±¾ pulsar connector,
+// * Óëµ±Ç° 1.20 ÉçÇø°æ±¾µÄ flink ºÍ pulsar connector api ÒÑ¾­´æÔÚ²¿·Ö api ²îÒì
+// * Òò´Ë±¾ demo Ê¹ÓÃ 1.17 flink °æ±¾½øĞĞÖØ¹¹
 // * <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/deployment/resource-providers/standalone/overview/">1.17 flink doc</a>
 // * <p>
-// * demo ç»Ÿè®¡æ—¶é—´çª—å£å†…æº topic æ‰€æœ‰æ¶ˆæ¯ä¸­æ¯ä¸ªå•è¯å‡ºç°é¢‘ç‡æ¬¡æ•°
-// * å¹¶ä¸”å°†ç»Ÿè®¡ç»“æœæŒ‰ç…§æ¯ä¸ªå•è¯å¯¹åº”ä¸€æ¡æ¶ˆæ¯çš„æ ¼å¼ï¼Œåºåˆ—åŒ–åæ¶ˆæ¯åæŠ•é€’åˆ°ç›®æ ‡ topic ä¸­
+// * demo Í³¼ÆÊ±¼ä´°¿ÚÄÚÔ´ topic ËùÓĞÏûÏ¢ÖĞÃ¿¸öµ¥´Ê³öÏÖÆµÂÊ´ÎÊı
+// * ²¢ÇÒ½«Í³¼Æ½á¹û°´ÕÕÃ¿¸öµ¥´Ê¶ÔÓ¦Ò»ÌõÏûÏ¢µÄ¸ñÊ½£¬ĞòÁĞ»¯ºóÏûÏ¢ºóÍ¶µİµ½Ä¿±ê topic ÖĞ
 // *
 // */
 //public class PulsarStreamingWordCount {
@@ -47,8 +47,8 @@
 //    private static final Logger LOG = LoggerFactory.getLogger(PulsarStreamingWordCount.class);
 //
 //    public static void main(String[] args) throws Exception {
-//        //  è§£æä»»åŠ¡ä¼ å‚
-//        //  é»˜è®¤ä½¿ç”¨ authToken æ–¹å¼é‰´æƒ
+//        //  ½âÎöÈÎÎñ´«²Î
+//        //  Ä¬ÈÏÊ¹ÓÃ authToken ·½Ê½¼øÈ¨
 //        final ParameterTool parameterTool = ParameterTool.fromArgs(args);
 //        if (parameterTool.getNumberOfParameters() < 2) {
 //            System.err.println("Missing parameters!");
@@ -71,11 +71,11 @@
 //                        .setServiceUrl(brokerServiceUrl)
 //                        .setStartCursor(StartCursor.latest())
 //                        .setTopics(inputTopic)
-//        //  æ­¤å¤„å°† message ä¸­çš„ payload åºåˆ—åŒ–æˆå­—ç¬¦ä¸²ç±»å‹
-//        //  ç›®å‰ source åªæ”¯æŒè§£ææ¶ˆæ¯ payload ä¸­çš„å†…å®¹ï¼Œå°† payload ä¸­çš„å†…å®¹è§£ææˆ pulsar schema å¯¹è±¡æˆ–è€…è‡ªå®šä¹‰çš„ class å¯¹è±¡
-//        //  è€Œæ— æ³•è§£æ message ä¸­ properties ä¸­çš„å…¶ä»–å±æ€§ï¼Œä¾‹å¦‚ publish_time
-//        //  å¦‚æœéœ€è¦è§£æ message ä¸­çš„ propertiesï¼Œéœ€è¦åœ¨ç»§æ‰¿ç±»ä¸­å®ç° PulsarDeserializationSchema.getProducedType() æ–¹æ³•
-//        //  getProducedType è¿™ä¸ªæ–¹æ³•å®ç°è¾ƒä¸ºç¹çï¼Œéœ€è¦å£°æ˜æ¯ä¸ªååºåˆ—åŒ–åçš„å±æ€§
+//        //  ´Ë´¦½« message ÖĞµÄ payload ĞòÁĞ»¯³É×Ö·û´®ÀàĞÍ
+//        //  Ä¿Ç° source Ö»Ö§³Ö½âÎöÏûÏ¢ payload ÖĞµÄÄÚÈİ£¬½« payload ÖĞµÄÄÚÈİ½âÎö³É pulsar schema ¶ÔÏó»òÕß×Ô¶¨ÒåµÄ class ¶ÔÏó
+//        //  ¶øÎŞ·¨½âÎö message ÖĞ properties ÖĞµÄÆäËûÊôĞÔ£¬ÀıÈç publish_time
+//        //  Èç¹ûĞèÒª½âÎö message ÖĞµÄ properties£¬ĞèÒªÔÚ¼Ì³ĞÀàÖĞÊµÏÖ PulsarDeserializationSchema.getProducedType() ·½·¨
+//        //  getProducedType Õâ¸ö·½·¨ÊµÏÖ½ÏÎª·±Ëö£¬ĞèÒªÉùÃ÷Ã¿¸ö·´ĞòÁĞ»¯ºóµÄÊôĞÔ
 //        //
 //        //https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/connectors/datastream/pulsar/#deserializer
 //            .setDeserializationSchema(new
@@ -83,12 +83,12 @@
 //            .setSubscriptionName(subscriptionName)
 //            .setAuthentication("org.apache.pulsar.client.impl.auth.AuthenticationToken", token)
 //            .build();
-//        //  ç”±äºæ­¤å¤„æ²¡æœ‰ä½¿ç”¨æ¶ˆæ¯ä½“ä¸­çš„æ—¶é—´ï¼Œå³æ²¡æœ‰ä½¿ç”¨æ¶ˆæ¯çš„ publish_time
-//        //  å› æ­¤æ­¤å¤„ä½¿ç”¨ noWatermark æ¨¡å¼ï¼Œä½¿ç”¨ taskManager çš„æ—¶é—´ä½œä¸ºæ—¶é—´çª—å£
+//        //  ÓÉÓÚ´Ë´¦Ã»ÓĞÊ¹ÓÃÏûÏ¢ÌåÖĞµÄÊ±¼ä£¬¼´Ã»ÓĞÊ¹ÓÃÏûÏ¢µÄ publish_time
+//        //  Òò´Ë´Ë´¦Ê¹ÓÃ noWatermark Ä£Ê½£¬Ê¹ÓÃ taskManager µÄÊ±¼ä×÷ÎªÊ±¼ä´°¿Ú
 //        DataStream<String> stream = env.fromSource(source, WatermarkStrategy.noWatermarks(), "Pulsar Source");
 //        //  process
-//        //  è§£æ source ä¸­æ¯è¡Œæ¶ˆæ¯ï¼Œé€šè¿‡ç©ºæ ¼åˆ†å‰²æˆå•ä¸ªå•è¯ï¼Œä¹‹åè¿›è¡Œæ±‡èšå¤„ç†å¹¶ä¸”åˆå§‹åŒ–æˆ WordCount ç»“æ„ä½“
-//        //  è¿™é‡Œä½¿ç”¨ TumblingProcessingTimeWindowsï¼Œå³ä½¿ç”¨å½“å‰ taskManager ç³»ç»Ÿæ—¶é—´è®¡ç®—æ—¶é—´çª—å£
+//        //  ½âÎö source ÖĞÃ¿ĞĞÏûÏ¢£¬Í¨¹ı¿Õ¸ñ·Ö¸î³Éµ¥¸öµ¥´Ê£¬Ö®ºó½øĞĞ»ã¾Û´¦Àí²¢ÇÒ³õÊ¼»¯³É WordCount ½á¹¹Ìå
+//        //  ÕâÀïÊ¹ÓÃ TumblingProcessingTimeWindows£¬¼´Ê¹ÓÃµ±Ç° taskManager ÏµÍ³Ê±¼ä¼ÆËãÊ±¼ä´°¿Ú
 //        DataStream<WordCount> wc = stream
 //                .flatMap((FlatMapFunction<String, WordCount>) (line, collector) -> {
 //                    LOG.info("current line = {}, word list = {}", line, line.split("\\s"));
@@ -106,10 +106,10 @@
 //                    return reducedWordCount;
 //                });
 //        //  sink
-//        //  ç›®å‰ 1.17 flink åºåˆ—åŒ–æä¾›äº†ä¸¤ç§å·²ç»å®ç°çš„æ–¹æ³•ï¼Œä¸€ç§æ˜¯ä½¿ç”¨ pulsar å†…ç½® schemaï¼Œå¦ä¸€ç§æ˜¯ä½¿ç”¨ flink çš„ schema
-//        //  ä½†ç”±äºç›®å‰ tdmq pulsar æä¾›çš„æ˜¯ 2.9 ç‰ˆæœ¬çš„ pulsarï¼Œå¯¹äº schema æ”¯æŒè¿˜ä¸å¤Ÿå®Œå–„
-//        //  æ­¤å¤„ä½¿ç”¨ flink PulsarSerializationSchema<T> æä¾›çš„æ¥å£ï¼Œå½“å‰ä¸»è¦éœ€è¦å®ç° serialize(IN element, PulsarSinkContext sinkContext) æ–¹æ³•
-////  å°†ä¼ å…¥çš„ IN å¯¹è±¡è‡ªå®šä¹‰åºåˆ—åŒ–ä¸º byte æ•°ç»„
+//        //  Ä¿Ç° 1.17 flink ĞòÁĞ»¯Ìá¹©ÁËÁ½ÖÖÒÑ¾­ÊµÏÖµÄ·½·¨£¬Ò»ÖÖÊÇÊ¹ÓÃ pulsar ÄÚÖÃ schema£¬ÁíÒ»ÖÖÊÇÊ¹ÓÃ flink µÄ schema
+//        //  µ«ÓÉÓÚÄ¿Ç° tdmq pulsar Ìá¹©µÄÊÇ 2.9 °æ±¾µÄ pulsar£¬¶ÔÓÚ schema Ö§³Ö»¹²»¹»ÍêÉÆ
+//        //  ´Ë´¦Ê¹ÓÃ flink PulsarSerializationSchema<T> Ìá¹©µÄ½Ó¿Ú£¬µ±Ç°Ö÷ÒªĞèÒªÊµÏÖ serialize(IN element, PulsarSinkContext sinkContext) ·½·¨
+////  ½«´«ÈëµÄ IN ¶ÔÏó×Ô¶¨ÒåĞòÁĞ»¯Îª byte Êı×é
 ////  https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/connectors/datastream/pulsar/#serializer
 //        PulsarSink<WordCount> sink = PulsarSink.builder()
 //                .setServiceUrl(brokerServiceUrl)
@@ -129,8 +129,8 @@
 //                    }
 //                    @Override
 //                    public PulsarMessage<?> serialize(WordCount wordCount, PulsarSinkContext sinkContext) {
-////  æ­¤å¤„å°† wordCount æ·»åŠ å¤„ç†æ—¶é—´åï¼Œå°† wordCount ä½¿ç”¨ json æ–¹å¼åºåˆ—åŒ–ä¸º byte æ•°ç»„
-////  ä»¥ä¾¿èƒ½å¤Ÿç›´æ¥æŸ¥çœ‹æ¶ˆæ¯ä½“å†…å®¹
+////  ´Ë´¦½« wordCount Ìí¼Ó´¦ÀíÊ±¼äºó£¬½« wordCount Ê¹ÓÃ json ·½Ê½ĞòÁĞ»¯Îª byte Êı×é
+////  ÒÔ±ãÄÜ¹»Ö±½Ó²é¿´ÏûÏ¢ÌåÄÚÈİ
 //                        byte[] wordCountBytes;
 //                        wordCount.setSinkDateTime(LocalDateTime.now().toString());
 //                        try {

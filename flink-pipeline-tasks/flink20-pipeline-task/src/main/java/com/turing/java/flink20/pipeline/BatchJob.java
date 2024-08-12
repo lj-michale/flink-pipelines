@@ -1,11 +1,11 @@
-ï»¿package com.turing.java.flink20.pipeline;
+package com.turing.java.flink20.pipeline;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * @descr Flinkå‘¨æœŸæ‰¹è®¡ç®—ä½œä¸š
+ * @descr FlinkÖÜÆÚÅú¼ÆËã×÷Òµ
  * $ bin/flink run -Dexecution.runtime-mode=BATCH <jarFile>
  *
  * STREAMING: The classic DataStream execution mode (default)

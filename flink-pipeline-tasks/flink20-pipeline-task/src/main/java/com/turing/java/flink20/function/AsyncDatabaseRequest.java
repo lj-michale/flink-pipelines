@@ -1,4 +1,4 @@
-﻿//package com.turing.java.flink20.function;
+//package com.turing.java.flink20.function;
 //
 //// This example implements the asynchronous request and callback with Futures that have the
 //// interface of Java 8's futures (which is the same one followed by Flink's Future)

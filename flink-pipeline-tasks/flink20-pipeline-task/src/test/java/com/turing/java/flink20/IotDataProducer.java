@@ -1,4 +1,4 @@
-ï»¿//package com.turing.java.flink20;
+//package com.turing.java.flink20;
 //
 //import com.turing.java.flink20.bean.IotData;
 //import org.apache.commons.lang3.RandomUtils;
@@ -10,7 +10,7 @@
 //import java.util.Map;
 //
 ///**
-// * @descr ç”Ÿäº§è€…IotDataProducer,ç”¨äºå°†æ¶ˆæ¯ç”Ÿäº§åˆ°puslarä¸­
+// * @descr Éú²úÕßIotDataProducer,ÓÃÓÚ½«ÏûÏ¢Éú²úµ½puslarÖĞ
 // *
 // * */
 //public class IotDataProducer {
@@ -35,7 +35,7 @@
 //            iotData.setDeviceId(1);
 //
 //            Map<String, Double> data = new HashMap<>();
-//            // æ¨¡æ‹Ÿæ•°æ®çš„å˜åŒ–
+//            // Ä£ÄâÊı¾İµÄ±ä»¯
 //            data.put("var1", RandomUtils.nextDouble());
 //            data.put("var2", RandomUtils.nextDouble());
 //            iotData.setData(data);
@@ -45,7 +45,7 @@
 //                    .send();
 //            System.out.println(ts + " send iot data " + iotData);
 //
-//            // ä¸‹ä¸€ç§’ 0 æ¯«ç§’çš„æ—¶é—´
+//            // ÏÂÒ»Ãë 0 ºÁÃëµÄÊ±¼ä
 //            long timeMillis = System.currentTimeMillis();
 //            long nextMills = timeMillis - (timeMillis % 1000) + 1000;
 //            long sleepMills = nextMills - timeMillis;
