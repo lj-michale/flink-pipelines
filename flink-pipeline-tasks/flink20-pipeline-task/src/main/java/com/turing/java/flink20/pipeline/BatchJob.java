@@ -1,6 +1,7 @@
 ﻿package com.turing.java.flink20.pipeline;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
+import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
@@ -14,6 +15,10 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 public class BatchJob {
 
     public static void main(String[] args) throws Exception {
+        // Handling Application Parameters
+        String propertiesFilePath = "/home/sam/flink/myjob.properties";
+        ParameterTool parameters = ParameterTool.fromPropertiesFile(propertiesFilePath);
+
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setRuntimeMode(RuntimeExecutionMode.BATCH);
 
