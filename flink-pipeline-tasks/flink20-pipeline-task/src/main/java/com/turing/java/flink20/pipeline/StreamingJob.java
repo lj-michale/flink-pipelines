@@ -4,6 +4,7 @@ import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.configuration.CheckpointingOptions;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.ExternalizedCheckpointRetention;
+import org.apache.flink.configuration.StateBackendOptions;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
@@ -12,7 +13,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  *
  * */
 public class StreamingJob {
+
     public static void main(String[] args) throws Exception {
+
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setRuntimeMode(RuntimeExecutionMode.STREAMING);
 
@@ -44,11 +47,17 @@ public class StreamingJob {
         env.configure(config);
 
         // enable checkpointing with finished tasks
-//        Configuration config = new Configuration();
-//        config.set(CheckpointingOptions.ENABLE_CHECKPOINTS_AFTER_TASKS_FINISH, true);
-//        env.configure(config);
+        // Configuration config = new Configuration();
+        // config.set(CheckpointingOptions.ENABLE_CHECKPOINTS_AFTER_TASKS_FINISH, true);
+        // env.configure(config);
 
+        // State Backends
+        // Configuration config = new Configuration();
+        // config.set(StateBackendOptions.STATE_BACKEND, "hashmap");
+        // env.configure(config);
 
         env.execute();
+
     }
+
 }
