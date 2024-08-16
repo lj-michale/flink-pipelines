@@ -12,10 +12,22 @@ spring:
           password: Turing@123
           driver-class-name: com.mysql.cj.jdbc.Driver
         warm-flow:
-          url: jdbc:mysql://localhost:3306/turing?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          url: jdbc:mysql://localhost:3306/warm-flow?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
           password: Turing@123
           driver-class-name: com.mysql.cj.jdbc.Driver
+
+### Camunda流程引擎
+camunda:
+  bpm:
+    database:
+      type: mysql
+      schema-update: true
+    auto-deployment-enabled: false # 自动部署 resources 下的 bpmn文件
+    admin-user:
+      id: demo
+      password: demo
+
 
 
 ### mybatis-plus配置

@@ -14,6 +14,7 @@
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <camunda.spring-boot.version>7.19.0</camunda.spring-boot.version>
     </properties>
 
     <dependencies>
@@ -75,10 +76,20 @@
             <version>1.4.6</version>
         </dependency>
         <!-- 流程引擎warm-flow -->
+<!--        <dependency>-->
+<!--            <groupId>io.github.minliuhua</groupId>-->
+<!--            <artifactId>warm-flow-mybatis-sb-starter</artifactId>-->
+<!--            <version>1.2.3</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>io.github.minliuhua</groupId>
-            <artifactId>warm-flow-mybatis-sb-starter</artifactId>
-            <version>1.2.3</version>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+            <version>${camunda.spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+            <version>${camunda.spring-boot.version}</version>
         </dependency>
     </dependencies>
 
