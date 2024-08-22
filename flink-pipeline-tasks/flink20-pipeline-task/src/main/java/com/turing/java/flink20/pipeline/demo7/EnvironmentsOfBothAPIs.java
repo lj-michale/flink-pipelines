@@ -1,12 +1,14 @@
 ﻿package com.turing.java.flink20.pipeline.demo7;
 
-import com.turing.java.flink20.pipeline.demo4.KafkaDataStreamSourceDemo;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
+/**
+ * https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/table/data_stream_api/
+ * */
 public class EnvironmentsOfBothAPIs {
 
     public static void main(String[] args) throws Exception {
