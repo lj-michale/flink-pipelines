@@ -1,12 +1,16 @@
 package com.turing.java.flink20.pipeline;
 
 import org.apache.flink.api.common.RuntimeExecutionMode;
+import org.apache.flink.api.common.functions.FlatMapFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.CheckpointingOptions;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.ExternalizedCheckpointRetention;
 import org.apache.flink.configuration.StateBackendOptions;
 import org.apache.flink.streaming.api.CheckpointingMode;
+import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.util.Collector;
 
 /**
  * @descr Flink实时流计算作业
@@ -56,7 +60,26 @@ public class StreamingJob {
         // config.set(StateBackendOptions.STATE_BACKEND, "hashmap");
         // env.configure(config);
 
-        env.execute();
+        DataStream<String> textStream = env.socketTextStream("localhost", 9999, "\n");
+        DataStream<Tuple2<String, Integer>> wordCountStream = textStream
+                // 对数据源的单词进行拆分，每个单词记为1，然后通过out.collect将数据发射到下游算子
+                .flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
+                             @Override
+                             public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
+                                 for (String word : value.split("\\s")) {
+                                     out.collect(new Tuple2<>(word, 1));
+                                 }
+                             }
+                         }
+                )
+                // 对单词进行分组
+                .keyBy(value -> value.f0)
+                // 对某个组里的单词的数量进行滚动相加统计
+                .reduce((a, b) -> new Tuple2<>(a.f0, a.f1 + b.f1));
+
+        wordCountStream.print("WordCountStream=======").setParallelism(1);
+
+        env.execute(StreamingJob.class.getSimpleName());
 
     }
 
