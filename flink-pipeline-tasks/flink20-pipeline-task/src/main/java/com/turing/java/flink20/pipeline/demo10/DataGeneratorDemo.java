@@ -10,6 +10,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 /**
  * Flink从1.11开始提供了一个内置的DataGen 连接器，主要是用于生成一些随机数，用于在没有数据源的时候，进行流任务的测试以及性能测试等。
  * Flink1.17开始提供了新的Source写法
+ * Flink中DataGeneratorSource和DataGen Connector的使用
  * */
 public class DataGeneratorDemo {
 
