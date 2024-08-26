@@ -1,7 +1,7 @@
 ﻿package com.turing.java.flink20.pipeline.demo9;
 
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
-
+import org.apache.flink.api.connector.source.Source;
 import java.util.Random;
 
 public class ClickSource implements SourceFunction<Event> {
