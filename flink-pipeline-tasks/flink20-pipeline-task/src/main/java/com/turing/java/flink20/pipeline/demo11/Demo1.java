@@ -1,5 +1,6 @@
 ﻿package com.turing.java.flink20.pipeline.demo11;
 
+import org.apache.flink.api.common.RuntimeExecutionMode;
 import org.apache.flink.api.common.serialization.SimpleStringEncoder;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.configuration.MemorySize;
@@ -8,6 +9,7 @@ import org.apache.flink.connector.file.sink.FileSink;
 import org.apache.flink.connector.kafka.sink.KafkaRecordSerializationSchema;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
+import org.apache.flink.core.execution.CheckpointingMode;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -24,9 +26,27 @@ public class Demo1 {
     public static void main(String[] args) throws Exception {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(1);
+        // 每20秒作为checkpoint的一个周期
+        env.enableCheckpointing(20000);
+        // 两次checkpoint间隔最少是10秒
+        env.getCheckpointConfig().setMinPauseBetweenCheckpoints(10000);
+        // 程序取消或者停止时不删除checkpoint
+//        env.getCheckpointConfig().setExternalizedCheckpointCleanup(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
+        // checkpoint必须在60秒结束,否则将丢弃
+        env.getCheckpointConfig().setCheckpointTimeout(60000);
+        // 同一时间只能有一个checkpoint
+        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
+        // 设置EXACTLY_ONCE语义,默认就是这个
+//        env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
+        // checkpoint存储位置
+//        env.getCheckpointConfig().setCheckpointStorage("file:///Users/xxx/data/testData/checkpoint");
+        // 设置执行模型为Streaming方式
+        env.setRuntimeMode(RuntimeExecutionMode.STREAMING);
+
         KafkaSource<String> kafkaSource = FlinkSourceUtil.getKafkaSource("test_topic", "test","localhost:9092");
 
-        SingleOutputStreamOperator<String> sensorDS = env.socketTextStream("localhost", 9999)
+        SingleOutputStreamOperator<String> sensorDS = env.socketTextStream("localhost", 9999);
 
 //        KafkaSink<String> kafkaSink = KafkaSink.<String>builder()
 //                // 指定 kafka 的地址和端口
