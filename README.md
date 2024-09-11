@@ -13,3 +13,4 @@
 - [mvnrepository](https://mvnrepository.com/)
 - [ruoyi](https://doc.ruoyi.vip/)
 - [flink-docs-release-1.20](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs)
+- [data-warehouse-learning](https://github.com/Mrkuhuo/data-warehouse-learning)
