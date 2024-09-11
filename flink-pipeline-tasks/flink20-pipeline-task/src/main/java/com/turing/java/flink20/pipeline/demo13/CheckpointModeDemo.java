@@ -31,7 +31,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class CheckpointModeDemo {
+
     public static void main(String[] args) throws Exception {
+
         Configuration conf = new Configuration();
         conf.setString(RestOptions.BIND_PORT, "8081");
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
@@ -43,7 +45,6 @@ public class CheckpointModeDemo {
         env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
         // 模式 At-Least-Once
         //env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.AT_LEAST_ONCE);
-
         // 两个 checkpoint 之间最小间隔
         env.getCheckpointConfig().setMinPauseBetweenCheckpoints(500);
         // 超时时间
@@ -55,7 +56,6 @@ public class CheckpointModeDemo {
         // 设置自动生成Watermark的间隔时间
         // env.getConfig().setAutoWatermarkInterval(100000);
         env.setParallelism(1);
-
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         DataStream<String> text = env.addSource(new RichParallelSourceFunction<String>() {
