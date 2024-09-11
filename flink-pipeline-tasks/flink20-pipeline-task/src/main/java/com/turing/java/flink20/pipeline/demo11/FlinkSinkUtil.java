@@ -11,7 +11,7 @@ public class FlinkSinkUtil {
                                                  String kafkaAdress) {
         KafkaSink<String> kafkaSink = KafkaSink.<String>builder()
                 .setBootstrapServers(kafkaAdress)
-                //写入的精准一次
+                // 写入的精准一次
                 .setDeliveryGuarantee(DeliveryGuarantee.EXACTLY_ONCE)
                 .setRecordSerializer(KafkaRecordSerializationSchema.<String>builder()
                         .setTopic(sinkTopic)
