@@ -26,7 +26,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class AllowedLatenessDemo {
+
     public static void main(String[] args) throws Exception {
+
         Configuration conf = new Configuration();
         conf.setString(RestOptions.BIND_PORT, "8081");
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
@@ -80,13 +82,14 @@ public class AllowedLatenessDemo {
             }
         });
 
-        DataStream<Tuple3<String, Integer, Long>> tuplesWithTimestamp = text.map(new MapFunction<String, Tuple3<String, Integer, Long>>() {
-            @Override
-            public Tuple3<String, Integer, Long> map(String value) {
-                String[] words = value.split(",");
-                return new Tuple3<>(words[0], Integer.parseInt(words[1]), Long.parseLong(words[2]));
-            }
-        }).returns(Types.TUPLE(Types.STRING, Types.INT, Types.LONG));
+        DataStream<Tuple3<String, Integer, Long>> tuplesWithTimestamp = text
+                .map(new MapFunction<String, Tuple3<String, Integer, Long>>() {
+                    @Override
+                    public Tuple3<String, Integer, Long> map(String value) {
+                        String[] words = value.split(",");
+                        return new Tuple3<>(words[0], Integer.parseInt(words[1]), Long.parseLong(words[2]));
+                    }
+                }).returns(Types.TUPLE(Types.STRING, Types.INT, Types.LONG));
 
         // 设置 Watermark 策略
         DataStream<Tuple3<String, Integer, Long>> withWatermarks = tuplesWithTimestamp.assignTimestampsAndWatermarks(

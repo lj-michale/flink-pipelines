@@ -14,7 +14,7 @@ import org.apache.flink.util.Collector;
 
 /**
  * @descr Flink实时流计算作业
- *
+ * @author Tony
  * */
 public class StreamingJob {
 
@@ -22,10 +22,8 @@ public class StreamingJob {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setRuntimeMode(RuntimeExecutionMode.STREAMING);
-
         // start a checkpoint every 1000 ms
         env.enableCheckpointing(1000);
-
         // advanced options:
         // set mode to exactly-once (this is the default)
         env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
@@ -60,7 +58,8 @@ public class StreamingJob {
         // config.set(StateBackendOptions.STATE_BACKEND, "hashmap");
         // env.configure(config);
 
-        DataStream<String> textStream = env.socketTextStream("localhost", 9999, "\n");
+        DataStream<String> textStream = env
+                .socketTextStream("localhost", 9999, "\n");
         DataStream<Tuple2<String, Integer>> wordCountStream = textStream
                 // 对数据源的单词进行拆分，每个单词记为1，然后通过out.collect将数据发射到下游算子
                 .flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
@@ -80,7 +79,6 @@ public class StreamingJob {
         wordCountStream.print("WordCountStream=======").setParallelism(1);
 
         env.execute(StreamingJob.class.getSimpleName());
-
     }
 
 }
