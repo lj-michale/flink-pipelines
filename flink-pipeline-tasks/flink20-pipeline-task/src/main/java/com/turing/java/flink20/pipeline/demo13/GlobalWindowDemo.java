@@ -73,7 +73,8 @@ public class GlobalWindowDemo {
         env.execute("Global Windowing Demo");
     }
 
-    public static class CountProcessFunction extends ProcessAllWindowFunction<Tuple3<String, Integer, Long>, Tuple2<String, Integer>, GlobalWindow> {
+    public static class CountProcessFunction extends ProcessAllWindowFunction<Tuple3<String,
+            Integer, Long>, Tuple2<String, Integer>, GlobalWindow> {
         @Override
         public void process(ProcessAllWindowFunction<Tuple3<String, Integer, Long>, Tuple2<String, Integer>, GlobalWindow>.Context context, Iterable<Tuple3<String, Integer, Long>> iterable, Collector<Tuple2<String, Integer>> collector) throws Exception {
             Map<String, Integer> counts = new HashMap<>();

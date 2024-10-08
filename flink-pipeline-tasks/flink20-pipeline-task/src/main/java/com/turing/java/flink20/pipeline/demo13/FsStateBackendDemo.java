@@ -32,7 +32,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class FsStateBackendDemo {
+
     public static void main(String[] args) throws Exception {
+
         Configuration conf = new Configuration();
         conf.setString(RestOptions.BIND_PORT, "8081");
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
