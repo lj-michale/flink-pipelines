@@ -36,7 +36,6 @@ public class GlobalWindowDemo {
         //使用配置
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
         env.setParallelism(1);
-
         // 设置时间语义为 Event Time
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
