@@ -13,7 +13,6 @@ import org.apache.flink.types.Row
 
 /**
   * @DESC: 读取 Kafka 2个不同的 topic 进行双流 join，把 join 结果写到 CK
-  * @Auther:
   * @Date: 2024/10/28 21:19
   */
 object Flink2StreamJoin2CK {
@@ -50,7 +49,7 @@ object Flink2StreamJoin2CK {
           /**读取kafka数据源为t2*/
           tableEnv.executeSql(
               """
-             Create table t2(
+             | Create table t2(
              |client_ip STRING,
              |nation STRING,
              |province STRING,
