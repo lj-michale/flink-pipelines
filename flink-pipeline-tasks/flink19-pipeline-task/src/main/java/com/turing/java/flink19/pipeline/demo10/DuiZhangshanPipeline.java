@@ -66,7 +66,6 @@ public class DuiZhangshanPipeline {
         }).keyBy(order -> order.getOrId());
 
         // -------------------------------关联处理-------------------------------------------------
-
 //        DataStream resultStream = orderDataStream.intervalJoin(receipDataStream)  //这里使用相对关联
 //                .between(Time.seconds(-3), Time.seconds(5))  // 订单数据等待到账数据时间前三秒到后三秒区间
 //                .process(new OrderMatchWithJoinFunction());  // 自定义类输出服务上边条件的数据
@@ -78,7 +77,6 @@ public class DuiZhangshanPipeline {
         resultStream.print("matched");
         resultStream.getSideOutput(unmatchedPayEventOutputTag).print("unmatched pays");
         resultStream.getSideOutput(unmatchedReceiptEventOutputTag).print("unmatched receipts");
-
         // ---------------------------------------------------------------------------------------
 
         resultStream.print();
@@ -166,11 +164,16 @@ public class DuiZhangshanPipeline {
     }
 
     public static class OrderEvent{
-
+        private Long userId;
+        private String action;
+        private String orId;
+        private Long timestamp;
     }
 
     public static class ReceiptEvent{
-
+        private String orId;
+        private String payEquipment;
+        private Long timestamp;
     }
 
 }
